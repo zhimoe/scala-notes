@@ -1,13 +1,11 @@
 import java.io.FileInputStream
-
 import org.apache.commons.codec.binary.Base64
-
 import scala.reflect.io.File
+import scala.language.reflectiveCalls
 
 val path = File(".").toAbsolute
 
 def use[A <: {def close() : Unit}, R](resources: A)(fun: A => R): R = {
-  import scala.language.reflectiveCalls
   try {
     fun(resources)
   } finally {
@@ -24,7 +22,9 @@ use(new FileInputStream("pic.jpg")) {
 }
 
 // best way read file as byte[]
+
 import java.nio.file.{Files, Paths}
-val byteArray :Array[Byte]= Files.readAllBytes(Paths.get("pic.jpg"))
+
+val byteArray: Array[Byte] = Files.readAllBytes(Paths.get("pic.jpg"))
 
 

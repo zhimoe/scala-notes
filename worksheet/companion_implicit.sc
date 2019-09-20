@@ -56,6 +56,7 @@ s.mkStr()
 "abc".map(_.toInt)
 // implicit scope
 // implicit conversion method should only one in context scope
+
 import scala.math._
 
 def chg[T](t: T)(implicit integral: Integral[T]) {
@@ -75,11 +76,13 @@ chg(0L) //scala.math.Numeric$LongIsIntegral$@5c05688b
 //    Implicit scope of type arguments (2.8.0)
 //    Outer objects for nested types
 
-import scala.collection.JavaConversions.mapAsScalaMap
+//import scala.collection.JavaConversions.mapAsScalaMap
+
+import scala.collection.JavaConverters._
 
 def env = System.getenv() // Java map
 // implicit conversion from Java Map to Scala Map
-val term = env("JAVA_HOME")
+val term = env.asScala("JAVA_HOME")
 
 
 //implicitly function in Predef
@@ -98,6 +101,7 @@ for {
 "cabc".indexOf("c")
 
 // Predef
+
 import scala.Predef
 
 
@@ -115,7 +119,7 @@ def wordsWithoutOutliers2(wordFrequencies: Seq[(String, Int)]): Seq[String] =
 wordsWithoutOutliers2(wordFrequencies)
 
 //use partialFunction
-def pf:PartialFunction[(String,Int),String]= {
+def pf: PartialFunction[(String, Int), String] = {
   case (w, f) if f > 3 && f < 25 => w
 }
 
@@ -124,17 +128,18 @@ wordFrequencies.collect(pf)
 import collection.JavaConverters._
 
 
-class A(val n: Int){
-  override def toString(): String ={
+class A(val n: Int) {
+  override def toString(): String = {
     return n.toString
   }
 }
 
 object A {
-    implicit val ord = new Ordering[A] {
-        def compare(x: A, y: A) = implicitly[Ordering[Int]].compare(x.n, y.n)
-    }
+  implicit val ord = new Ordering[A] {
+    def compare(x: A, y: A) = implicitly[Ordering[Int]].compare(x.n, y.n)
+  }
 }
-val sl=List(new A(5), new A(2)).sorted
+
+val sl = List(new A(5), new A(2)).sorted
 
 
