@@ -8,6 +8,7 @@ import scala.collection.mutable.ArrayBuffer
 import org.elasticsearch.spark._ // add saveToEs methods
 
 /**
+ * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/spark.html
  * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/configuration.html
  * https://www.elastic.co/guide/en/elasticsearch/hadoop/6.2/security.html
  */
