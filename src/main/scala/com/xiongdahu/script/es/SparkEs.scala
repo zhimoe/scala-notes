@@ -30,18 +30,20 @@ object SparkEs {
     val rndGen = RndGen() //随机生成器
 
     def doc(): Map[String, String] = {
-      Map("name" -> rndGen.randomHan(), "age" -> rndGen.randomInt(10, 80).toString, "company" -> rndGen.randomHan())
+      Map("name" -> rndGen.randomHan(),
+        "age" -> rndGen.randomInt(10, 80).toString,
+        "company" -> rndGen.randomHan())
     }
 
     val persons = ArrayBuffer[Map[String, String]]()
 
     timing {
-      for (i <- 1 to 100000) {
-        persons += (doc())
+      for (_ <- 1 to 1000) {
+        persons += doc()
       }
 
       sc.makeRDD(persons)
-        .saveToEs("testindex/doc") //pimp my lib with implicit conversion
+        .saveToEs("index/doc") //pimp my lib with implicit conversion
     }
   }
 
