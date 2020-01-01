@@ -1,4 +1,4 @@
-package com.xiongdahu.script.util
+package com.cod3fn.script.util
 
 object Timing {
 
@@ -9,5 +9,4 @@ object Timing {
     println(s"###Elapsed time: ${(t1 - t0) / 1000000L} ms")
     result
   }
-
 }

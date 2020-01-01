@@ -1,4 +1,4 @@
-package com.xiongdahu.script.util
+package com.cod3fn.script.util
 
 /**
  * io资源读写管理

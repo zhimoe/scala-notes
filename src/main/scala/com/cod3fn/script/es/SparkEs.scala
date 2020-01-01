@@ -1,9 +1,9 @@
-package com.xiongdahu.script.es
+package com.cod3fn.script.es
 
-import com.xiongdahu.script.util.RndGen
+import com.cod3fn.script.util.RndGen
 import com.xiongdahu.script.util.Timing._
-
 import org.apache.spark.{SparkConf, SparkContext}
+
 import scala.collection.mutable.ArrayBuffer
 import org.elasticsearch.spark._ // add saveToEs methods
 
@@ -19,9 +19,9 @@ object SparkEs {
     conf.set("spark.streaming.stopGracefullyOnShutdown", "true")
 
     conf.set("es.index.auto.create", "true")
-      .set("es.nodes", "127.0.0.1") //逗号隔开
+      .set("es.nodes", "127.0.0.1") //节点用逗号隔开
       .set("es.port", "9200")
-      .set("es.nodes.wan.only", "true") // data nodes 不可用时则设置这个
+      .set("es.nodes.wan.only", "true") // data nodes 不接受请求时需要设置该项=true
       .set("es.net.http.auth.user", "admin")
       .set("es.net.http.auth.pass", "pass")
     val sc = new SparkContext(conf)

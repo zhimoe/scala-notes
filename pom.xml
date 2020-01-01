@@ -61,6 +61,11 @@
             <version>2.4.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.3.1</version>
+        </dependency>
 
         <!--test-->
         <dependency>
@@ -69,12 +74,33 @@
             <version>2.17.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- plugin -->
+        <dependency>
+            <groupId>com.oracle.substratevm</groupId>
+            <artifactId>native-image-maven-plugin</artifactId>
+            <version>19.2.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>scala-notes</finalName>
         <sourceDirectory>src/main/scala</sourceDirectory>
         <plugins>
+            <plugin>
+                <groupId>com.oracle.substratevm</groupId>
+                <artifactId>native-image-maven-plugin</artifactId>
+                <version>19.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>native-image</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
@@ -125,7 +151,7 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class></Main-Class>
+                                        <Main-Class>com.xiongdahu.script.redis.CountKeyByPrefix</Main-Class>
                                         <Build-Number>1</Build-Number>
                                     </manifestEntries>
                                 </transformer>

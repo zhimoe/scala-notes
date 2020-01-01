@@ -35,13 +35,13 @@ val tpl = ("a", "b")
 tpl._2 //返回tpl第二个元素，注意，tuple是从1开始的
 
 //特殊变量名中操作符之前需要使用_,否则会报错,可以试着删除下面的_
-def abc_<>! // An underscore must separate alphanumerics from symbols on identifiers
+def abc_<>!() // An underscore must separate alphanumerics from symbols on identifiers
 
 //泛型方法的类型占位符 Existential type
 trait IterableOps[+A, +CC[_], +C] {
 
 }
-def f[M[_]]       // Higher kinded type parameter
+def f[M[_]]      // Higher kinded type parameter
 
 def ef(m: M[_])
 
