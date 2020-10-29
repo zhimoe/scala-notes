@@ -42,3 +42,4 @@ val f1 = m1 _ //下划线z表示参数列表 eta-expansion
 val f2: (Int) => Int = m1 //m1 的入参和返回值要和f2的一样
 
 
+

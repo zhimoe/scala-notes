@@ -1,11 +1,11 @@
-package com.cod3fn.script.es
+package zhi.moe.script.es
 
-import com.cod3fn.script.util.RndGen
-import com.xiongdahu.script.util.Timing._
+import zhi.moe.script.util.Timing._
 import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.collection.mutable.ArrayBuffer
-import org.elasticsearch.spark._ // add saveToEs methods
+import org.elasticsearch.spark._
+import zhi.moe.script.util.RndGen // add saveToEs methods
 
 /**
  * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/spark.html

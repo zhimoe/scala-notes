@@ -1,4 +1,4 @@
-package com.cod3fn.script.util
+package zhi.moe.script.util
 
 import java.time.{LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter

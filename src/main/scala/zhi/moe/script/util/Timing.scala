@@ -1,4 +1,4 @@
-package com.cod3fn.script.util
+package zhi.moe.script.util
 
 object Timing {
 

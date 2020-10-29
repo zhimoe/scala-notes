@@ -1,4 +1,4 @@
-package com.cod3fn.script.util
+package zhi.moe.script.util
 
 /**
  * io资源读写管理
